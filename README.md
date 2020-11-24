@@ -1,6 +1,6 @@
 # Telephony Integration Example
 
-Example of Integrating your Phone System with Recruit Wizard's Public API
+Example App showcasing Integrating your Phone System with Recruit Wizard's Public API
 
 The app will demonstrate
 
