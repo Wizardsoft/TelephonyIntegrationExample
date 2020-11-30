@@ -7,6 +7,7 @@ import { Counter } from './components/Counter';
 import { Testing } from './components/Testing';
 
 import './custom.css'
+import './components/Testing.css'
 
 export default class App extends Component {
   static displayName = App.name;
