@@ -8,7 +8,7 @@
 
  - Refreshing a token
 
-    TODO
+    Example code is [here](https://github.com/Wizardsoft/TelephonyIntegrationExample/blob/f6f9f7f80e010e24c0a656d046a3a5422c9f207b/src/ClientApp/src/components/Testing.js#L70)
 
  - Simulating a phone call and calling the telephony lookup method.
 
