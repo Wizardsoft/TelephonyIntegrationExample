@@ -1,0 +1,8 @@
+mode: ContinuousDeployment
+assembly-versioning-scheme: MajorMinorPatch
+branches:
+  master:
+    regex: ^(main|master)$
+    source-branches: ["main"]
+ignore:
+  sha: []
