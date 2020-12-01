@@ -9,7 +9,6 @@ export class LogCallModal extends React.Component {
 
     onLogCall = async () => {
         let payload = {
-            // "Subject": this.state.subject,
             "StatusID": 2,
             "Notes": this.state.note,
             "TypeId": this.props.callTypeId,
