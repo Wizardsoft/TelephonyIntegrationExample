@@ -64,6 +64,30 @@ export class Testing extends React.Component {
         window.location.replace(url);
     }
 
+    refreshToken = async () => {
+        if(!this.state.refresh_token) return;
+        this.setState({loadingTokens: true});
+        let url = 'https://api.wizardsoft.com/core/connect/token';
+        let payload = `client_id=${this.state.client_id}&client_secret=${this.state.client_secret}&grant_type=refresh_token&refresh_token=${this.state.refresh_token}`;
+        try {
+            let res = await fetch(url, {
+                method: 'POST',
+                body: payload,
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded', 'Accept': 'application/json' }
+            });
+            this.setState({loadingTokens: false});
+            if (res.ok) {
+                let data = await res.json();
+                localStorage.setItem('access_token', data.access_token);
+                localStorage.setItem('refresh_token', data.refresh_token);
+                this.setState({ access_token: data.access_token, refresh_token: data.refresh_token });
+            }
+            else this.setState({ token_data: 'Login is required' });
+        } catch (error) {
+            this.setState({ token_data: 'Login is required', loadingTokens: false });
+        }
+    }
+
     simulateCall = async () => {
         this.setState({ caller: null, jobs: null, loadingCaller: true });
         let apiUrl = 'https://localhost:44302/api/';
@@ -146,8 +170,9 @@ export class Testing extends React.Component {
                 </div>
                 <div className="btn-group" role="group">
                     <button className="btn btn-primary" onClick={this.startOAuthFlow} disabled={this.state.client_id === '' || this.state.client_secret === ''} >Sign in with Recruit Wizard</button>
+                    <button className="btn btn-secondary" onClick={this.refreshToken} disabled={!this.state.refresh_token}>Refresh Token</button>
                     <div className="btn-group" role="group">
-                        <button className="btn btn-danger dropdown-toggle" type="button" id="ddbClearLocalStorage" data-toggle="dropdown">Clear Local Storage</button>
+                        <button className="btn btn-danger dropdown-toggle" type="button" data-toggle="dropdown">Clear Local Storage</button>
                         <div className="dropdown-menu">
                             <button className="dropdown-item" onClick={this.clearTokens}>Tokens</button>
                             <button className="dropdown-item" onClick={this.clearAuth}>Auth data</button>
@@ -162,8 +187,8 @@ export class Testing extends React.Component {
                 }
                 {this.state.access_token ?
                     <div className="bg-light rounded m-3 p-3">
-                        <h3 className="text-monospace text-break">access_token: {localStorage.getItem('access_token')}</h3>
-                        <h3 className="text-monospace text-break mb-0">refresh_token: {localStorage.getItem('refresh_token')}</h3>
+                        <h3 className="text-monospace text-break">access_token: {this.state.access_token}</h3>
+                        <h3 className="text-monospace text-break mb-0">refresh_token: {this.state.refresh_token}</h3>
                     </div>
                     :
                     <div className="alert alert-danger mt-3">Please sign in to simulate calls</div>
