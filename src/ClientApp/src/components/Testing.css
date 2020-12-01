@@ -3,11 +3,7 @@ button:disabled {
     pointer-events: all !important;
 }
 
-/* .vertical-scrollable> .row { 
-  position: absolute; 
-  top: 120px; 
-  bottom: 100px; 
-  left: 180px; 
-  width: 50%; 
-  overflow-y: scroll;  
-}  */
+div.spinner-border {
+  width: 3em;
+  height: 3em;
+}

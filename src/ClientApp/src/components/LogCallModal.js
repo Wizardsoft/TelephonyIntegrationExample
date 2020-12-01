@@ -3,13 +3,14 @@ import React from 'react';
 export class LogCallModal extends React.Component {
     constructor(props) {
         super(props);
-        this.state={subject: '', note: ''};
+        // this.state={subject: '', note: ''};
+        this.state={ note: ''};
     }
 
     onLogCall = async () => {
         let payload = {
-            "Subject": this.state.subject,
-            "StatusID": 1,
+            // "Subject": this.state.subject,
+            "StatusID": 2,
             "Notes": this.state.note,
             "TypeId": this.props.callTypeId,
             "LinkedPlayers": [
@@ -24,7 +25,8 @@ export class LogCallModal extends React.Component {
         let res = await fetch(url, {method: 'POST', body: JSON.stringify(payload), headers: {'Content-Type': 'application/json'}});
         if (res.ok) {
             let data = await res.json();
-            this.setState({subject: '', note: ''});
+            // this.setState({subject: '', note: ''});
+            this.setState({ note: ''});
             document.getElementById('close-button').click();
         }
     }
@@ -37,15 +39,10 @@ export class LogCallModal extends React.Component {
                     <div className="modal-header">
                         <h5 className="modal-title" id="logCallModalLabel">Log {this.props.callType} Call</h5>
                         <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-                        {/* <span aria-hidden="true">&times;</span> */}
                         </button>
                     </div>
                     <div className="modal-body">
                         <form>
-                        <div className="form-group">
-                            <label htmlFor="input-subject" className="col-form-label">Subject:</label>
-                            <input type="text" className="form-control" id="input-subject" value={this.state.subject} onChange={(e) => this.setState({subject: e.target.value})} />
-                        </div>
                         <div className="form-group">
                             <label htmlFor="input-note" className="col-form-label">Note:</label>
                             <textarea className="form-control" id="input-note" value={this.state.note} onChange={(e) => this.setState({note: e.target.value})}></textarea>

@@ -5,6 +5,7 @@ import { Testing } from './components/Testing';
 
 import './custom.css'
 import './components/Testing.css'
+import './components/LogCallModal.css'
 
 export default class App extends Component {
   static displayName = App.name;
