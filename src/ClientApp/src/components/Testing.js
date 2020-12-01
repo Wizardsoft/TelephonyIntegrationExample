@@ -27,8 +27,6 @@ export class Testing extends React.Component {
         if (code) {
             let url = 'https://api.wizardsoft.com/core/connect/token';
             let r = encodeURIComponent('https://localhost:44302/auth/callback');
-            // let payload = `client_id=wSwdWUKkHLZyuPWYGHyZvPdwBe7LnDMwJexgIzZqjnwXyFFOXs
-            //&client_secret=pLITWzUVrd17dv4A0oLUMyNEfhxmHwRd2f7M4ssk0dzFYDoEOExkKNdrXWFdxMh4yixP1n133GCQ25U9cxHmEKiUSM38i9BCRpm&grant_type=authorization_code&code=${encodeURIComponent(code)}&redirect_uri=${r}`;
             let payload = `client_id=${this.state.client_id}&client_secret=${this.state.client_secret}&grant_type=authorization_code&code=${encodeURIComponent(code)}&redirect_uri=${r}`;
             try {
                 let res = await fetch(url, {
@@ -54,11 +52,9 @@ export class Testing extends React.Component {
         let c = encodeURIComponent(this.state.client_id);
         let r = encodeURIComponent('https://localhost:44302/auth/callback');
         let s = "read write offline_access";
-        let state = 'aaabbbccc111222333'
+        let state = 'aaabbbccc111222333';
         let url = `https://api.wizardsoft.com/core/connect/authorize?client_id=${c}&redirect_uri=${r}&scope=${s}&response_type=code&state=${state}`;
-        // window.open(url);
         window.location.replace(url);
-        //callback?code=4b162ba9927637656f252c1f5b6066c8&state=aaabbbccc111222333
     }
 
     simulateCall = async () => {
@@ -67,7 +63,7 @@ export class Testing extends React.Component {
         let token = localStorage.getItem('access_token');
         if (token) {
             // let url = `https://api.wizardsoft.com/api/telephony/lookup/${phone}`
-            let url = `${apiUrl}caller-data?token=${token}&tel=${phone}`
+            let url = `${apiUrl}caller-data?token=${token}&tel=${phone}`;
             let res = await fetch(url);
             if (res.ok) {
                 let data = await res.json();
@@ -110,9 +106,8 @@ export class Testing extends React.Component {
 
     render() {
         return (
-            <div>
-                <h1>Testing OAuth2</h1>
-                <div className="input-group mb-3">
+            <div> 
+            <div className="input-group mb-3">
                     <div className="input-group-prepend"><span className="input-group-text">client_id</span></div>
                     <input type="text" className="form-control" value={this.state.client_id} onChange={this.handleClientIdChange}/>
                 </div>
