@@ -91,7 +91,7 @@ export class Testing extends React.Component {
 
     getOpenJobs = async () => {
         if(this.state.loadingJobs) return;
-        this.setState({loadingJobs: true});
+        this.setState({loadingJobs: true, jobs: null});
         let apiUrl = 'https://localhost:44302/api/';
         let caller = this.state.caller;
         let token = localStorage.getItem('access_token');
@@ -203,9 +203,15 @@ export class Testing extends React.Component {
                             }
                             {this.state.jobs &&
                                 <div className="col-sm bg-light overflow-auto" style={{ height: '500px' }}>
-                                    {this.state.jobs && this.state.jobs.map((job, index) => {
-                                        return <JobRenderer job={job} key={index} />;
-                                    })}
+                                    {this.state.jobs.length > 0 ? 
+                                        this.state.jobs.map((job, index) => {
+                                            return <JobRenderer job={job} key={index} />;
+                                        })
+                                        :
+                                        <div className="p-3 text-center">
+                                            <h5>No jobs found</h5>
+                                        </div>
+                                    }
                                 </div>
                             }
                         </div>
