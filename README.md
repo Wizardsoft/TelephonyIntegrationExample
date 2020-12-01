@@ -24,3 +24,5 @@ This card will show the below info:
  - Displaying a List of Open Jobs based on the record returned from the telephony lookup method
  - Logging an Outbound Call back into Recruit Wizard
  - Logging an Inbound Call back into Recruit Wizard
+
+Refer to [How it Works](HowItWorks.md) fopr details of Apps inner workings
