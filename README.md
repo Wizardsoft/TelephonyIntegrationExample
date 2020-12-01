@@ -1,5 +1,7 @@
 # Telephony Integration Example
 
+[![Build Status](https://dev.azure.com/wizardsoftglobal/Recruit%20Wizard/_apis/build/status/TelephonyIntegrationExample?branchName=main)](https://dev.azure.com/wizardsoftglobal/Recruit%20Wizard/_build/latest?definitionId=66&branchName=main)
+
 Example App showcasing Integrating your Phone System with Recruit Wizard's Public API
 
 The app will demonstrate
