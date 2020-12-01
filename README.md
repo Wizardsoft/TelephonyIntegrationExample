@@ -25,4 +25,4 @@ This card will show the below info:
  - Logging an Outbound Call back into Recruit Wizard
  - Logging an Inbound Call back into Recruit Wizard
 
-Refer to [How it Works](HowItWorks.md) fopr details of Apps inner workings
+Refer to [How it Works](HowItWorks.md) for details of Apps inner workings
