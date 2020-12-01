@@ -14,9 +14,9 @@
 
     The Recruit Wizard API accepts phone numbers in the E.164 format without the use of the + symbol.
 
-    Swagger spec is [here](https://api.wizardsoft.com/swagger/ui/index#!/Telephony/Telephony_LookUp)
-
     Example code is [here](https://github.com/Wizardsoft/TelephonyIntegrationExample/blob/744cd775c78c091e601e633eb8df2766db872d39/src/Controllers/AuthController.cs#L15)
+
+    Swagger spec is [here](https://api.wizardsoft.com/swagger/ui/index#!/Telephony/Telephony_LookUp)    
 
  - Displaying a card based on the data returned from the telephony
    lookup method.
@@ -34,15 +34,25 @@
 
  - Displaying a List of Open Jobs based on the record returned from the telephony lookup method
 
-    Open Jobs are available for contacts only. Calling [this method](https://api.wizardsoft.com/swagger/ui/index#!/Jobs/Jobs_JobsByContactOpen) on the API will return them.
+    Open Jobs are available for contacts only. 
 
     Example code is [here](https://github.com/Wizardsoft/TelephonyIntegrationExample/blob/744cd775c78c091e601e633eb8df2766db872d39/src/Controllers/AuthController.cs#L26)
 
- - Logging an Outbound Call back into Recruit Wizard
+    Swagger spec is [here](https://api.wizardsoft.com/swagger/ui/index#!/Jobs/Jobs_JobsByContactOpen) on the API will return them.    
+
+ - Logging an Inbound / Outbound Call back into Recruit Wizard
 
     It is highly recommended that a user is prompted to log a note whenever a call finishes. The type of note will differ depending on if the call was inbound or outbound.
 
-    The note is created by using [this method](https://api.wizardsoft.com/swagger/ui/index#!/Activities/Activities_Post)
+    Example code is [here](https://github.com/Wizardsoft/TelephonyIntegrationExample/blob/5baaa4013ef3d967933eece18113dcfb31521a96/src/Controllers/AuthController.cs#L48)
+
+    Swagger spec is [here](https://github.com/Wizardsoft/TelephonyIntegrationExample/blob/5baaa4013ef3d967933eece18113dcfb31521a96/src/Controllers/AuthController.cs#L48)
+
+    The Status of the Note should always be 'Closed' aka. StatusID = 2
+
+    The Type will differ for Inbound = 1, Outbound = 4
+
+    The Entity will differ for Contact = 2, Candidate = 3
 
     ```json
     {
@@ -58,5 +68,3 @@
         ]
     }
     ```
-
- - Logging an Inbound Call back into Recruit Wizard
