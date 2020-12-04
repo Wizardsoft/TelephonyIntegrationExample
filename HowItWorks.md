@@ -46,7 +46,7 @@
 
     Example code is [here](https://github.com/Wizardsoft/TelephonyIntegrationExample/blob/5baaa4013ef3d967933eece18113dcfb31521a96/src/Controllers/AuthController.cs#L48)
 
-    Swagger spec is [here](https://github.com/Wizardsoft/TelephonyIntegrationExample/blob/5baaa4013ef3d967933eece18113dcfb31521a96/src/Controllers/AuthController.cs#L48)
+    Swagger spec is [here](https://api.wizardsoft.com/swagger/ui/index#!/Activities/Activities_Post)
 
     The Status of the Note should always be 'Closed' aka. StatusID = 2
 
